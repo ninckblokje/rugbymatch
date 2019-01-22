@@ -1,7 +1,8 @@
 package com.paulienvanalst.rugbymatch.team
 
+data class Player(val position: Position, val backNumber: Int) {
 
-class Player(val position: Position, val bakcNumber: Int) {
-//todo to implement
+    val isStarting: Boolean
+        get() = (backNumber in 1..15)
 
 }
