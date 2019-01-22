@@ -15,7 +15,6 @@ class SetPiecesTest {
 
     @Nested
     @DisplayName("Ex 2a: Scrum tests")
-    @Disabled
     inner class ScrumTests{
         @Test
         fun `a scrum is valid when both teams have a scrum`() {
@@ -44,7 +43,6 @@ class SetPiecesTest {
 
     @Nested
     @DisplayName("Ex 2b: Line-out tests")
-    @Disabled
     inner class LineOutTests {
         @ParameterizedTest
         @ValueSource(ints = [5, 8])

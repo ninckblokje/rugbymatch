@@ -5,19 +5,19 @@ import com.paulienvanalst.rugbymatch.team.Team
 
 
 interface SetPiece {
-//    val attackingTeam: Team
-//    val defendingTeam: Team
+    val attackingTeam: Team
+    val defendingTeam: Team
 
     fun isValid() : Boolean
 }
 
-data class Scrum(val attackingTeam: Team, val defendingTeam: Team) : SetPiece {
+data class Scrum(override val attackingTeam: Team, override val defendingTeam: Team) : SetPiece {
 
     /**
      * A scrum is valid when both teams participating have a scrum
      */
     override fun isValid(): Boolean {
-        throw NotImplementedException()
+        return attackingTeam.hasEnoughScrumPlayersInPlay() && defendingTeam.hasEnoughScrumPlayersInPlay()
     }
 }
 
@@ -25,9 +25,9 @@ data class Scrum(val attackingTeam: Team, val defendingTeam: Team) : SetPiece {
  * A lineout is valid when both team participating have the same number of players playing the line-out
  */
 
-data class LineOut(val attackingTeam: Team, val defendingTeam: Team) : SetPiece {
+data class LineOut(override val attackingTeam: Team, override val defendingTeam: Team) : SetPiece {
 
     override fun isValid(): Boolean {
-        throw NotImplementedException()
+        return attackingTeam.players.count() == defendingTeam.players.count()
     }
 }
